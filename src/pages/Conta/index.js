@@ -1,9 +1,13 @@
 import React from "react";
+import { List, ListGroup, ListGroupItem } from "reactstrap";
 
-function Conta (){
+const Item = ({onChange, onDelete, value}) => {
     return(
-        <h1>Pagina Conta</h1>
+        <div className="Item">
+            <input className="Item" value={value} onChange={onChange}/>
+            <button onClick={onDelete}>Excluir</button>
+        </div>
     );
 };
 
-export default Conta;
+export default Item;

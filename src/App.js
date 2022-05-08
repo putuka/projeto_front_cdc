@@ -7,7 +7,7 @@ import Login from './pages/Login';
   function App(){
     return (
       <div className='App'>
-        <h1>Aplicativo de Compras</h1>
+        
         <Routes>
           <Route path="/"  element ={<Main/>} />
           <Route path="/conta" element ={<Conta/>} />
