@@ -3,6 +3,7 @@ import {Routes, Route} from "react-router-dom";
 import Main from './pages/Main';
 import Conta from './pages/Conta';
 import Login from './pages/Login';
+import Cadastro from './pages/cadastro/Cadastro.js';
 
   class App extends Component{ 
     render(){ 
@@ -15,6 +16,7 @@ import Login from './pages/Login';
           <Route path="/"  element ={<Main/>} />
           <Route path="/conta" element ={<Conta/>} />
           <Route path="/login" element ={<Login/>} />
+          <Route path="/cadastro" element ={<Cadastro/>} />
         </Routes>
       </div>
       );};
