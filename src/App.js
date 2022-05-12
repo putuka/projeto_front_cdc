@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import {Routes, Route} from "react-router-dom";
-import Main from './pages/Main';
 import Conta from './pages/Conta';
-import Login from './pages/Login';
+import Login from './pages/Login/Login';
 import Cadastro from './pages/cadastro/Cadastro.js';
 
   class App extends Component{ 
@@ -13,7 +12,7 @@ import Cadastro from './pages/cadastro/Cadastro.js';
       <div className='App'>
         <h1></h1>
         <Routes>
-          <Route path="/"  element ={<Main/>} />
+          <Route path="/"  element ={<Login/>} />
           <Route path="/conta" element ={<Conta/>} />
           <Route path="/login" element ={<Login/>} />
           <Route path="/cadastro" element ={<Cadastro/>} />

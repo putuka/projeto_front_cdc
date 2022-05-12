@@ -1,8 +1,38 @@
-.mainLogin{
-    background-image: url("../image/carrinhoback.jpg");
+*{
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    margin: 0;
+}
+.corpo{
+    background: rgb(238,174,202);
+    background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
     padding: 1rem;
-    background-size: cover;
-    height: 100vh;
-    width: 100vw;
-    position: relative;
+    background-size: auto;
+    height: 99vh;
+    width: 99vw;
+    position: absolute;
+}
+.corpo-login{
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    padding: 300px;
+    gap: 15px; 
+}
+.corpo-login-input{
+    height: 45px;
+    width: 313px;
+    padding: 5px;
+    border-radius: 15px;
+    text-align: center;
+}
+.corpo-login-input-botao{
+    height: 45px;
+    width: 100px;
+    padding: 10px;
+    border-radius: 25px;
+    text-align: center;
+    flex-direction: row;
+    gap: 10px;
 }
