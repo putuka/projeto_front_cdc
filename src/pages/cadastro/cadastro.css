@@ -12,16 +12,16 @@
     background-size: auto;
     height: 99vh;
     width: 99vw;
-    position: absolute;
+    position: fixed;
 }
 .formulario{
-        flex-direction: column;
-        display: flex;
-        align-items: center;
-        padding: 300px;
-        gap: 15px; 
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    padding: 300px;
+    gap: 15px; 
 }
-.forminput[type = text], form input[type = password]{
+.forminput{
     height: 45px;
     width: 313px;
     padding: 5px;
@@ -29,12 +29,19 @@
     text-align: center;
     
 }
+.formulario-botao{
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+    text-align: center;
+    padding: 20px;
+}
 .formbotao{
     height: 45px;
     width: 100px;
-    padding: 10px;
     border-radius: 25px;
-    text-align: center;
-    flex-direction: row;
-    gap: 10px;
+}
+.titulo-form{
+    font-style: italic;
+    font-size: 70px;
 }

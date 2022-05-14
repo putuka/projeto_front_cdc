@@ -5,22 +5,18 @@ function Cadastro (){
     return(
         <html>
             <body className="body">
-                <form className="formulario">
-                    <form>
-                        
+                <div className="formulario">
+                        <h1 className="titulo-form">Cadastro</h1>
                         <input className="forminput" type="text" name = "Nome" placeholder = "nome..."/>
                         <input className="forminput" type="text" name = "email" placeholder = "Email..."/>
                         <input className="forminput" type="password" name = "password" placeholder = "Senha..."/>
                         <input className="forminput" type ="password" name = "password" placeholder = "Confirme sua Senha..."/>
-                    </form>
-                    <form>
-                        <input className="formbotao" href="/login" type="submit" name="acao" value="Cadastrar"/>
-                        <input className="formbotao" href="/login" type="submit" name="acao" value="Cancelar"/>
-                    </form>
-                </form>
+                        <div className="formulario-botao">
+                            <input className="formbotao" href="/login" type="submit" name="acao" value="Cadastrar"/>
+                            <input className="formbotao" href="/login" type="submit" name="acao" value="Cancelar"/>
+                        </div>
+                </div>
                 
             </body>   
         </html>
-);};
-
-export default Cadastro;
+);};export default Cadastro;

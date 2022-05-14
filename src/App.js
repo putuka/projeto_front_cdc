@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {Routes, Route} from "react-router-dom";
-import Conta from './pages/Conta';
+import Conta from './pages/Conta/Conta';
 import Login from './pages/Login/Login';
 import Cadastro from './pages/cadastro/Cadastro.js';
 

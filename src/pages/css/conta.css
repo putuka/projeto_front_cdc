@@ -1,0 +1,52 @@
+.back{
+    background: rgb(238,174,202);
+    background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+    padding: 0rem;
+    background-size: cover;
+    height: 100vmax;
+    width: 100vmax;
+    position: fixed;
+    margin: 0 auto;
+}
+.nav{
+    display: flex;
+    gap:30px;  
+    padding: 20px;
+    opacity: 0.8;
+    justify-content: space-around;
+}
+.active{
+    font-style: italic;
+    color: #000;
+    font-size: 30px;
+}
+.titulo-lista{
+    justify-items: center;
+}
+.tabela{
+    display: flex;
+    gap: 100px;
+    
+    justify-content: space-between;
+}
+.itens-tabela{
+    font-size: 30px;
+}
+.div-tabela{
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    padding: 50px;
+    gap: 15px;
+}
+.botaoEnviar{
+background-color: aquamarine;
+}
+.botaoExcluir{
+background-color: tomato;
+}
+
+.botaoAdicionar{
+    background-color: blanchedalmond;
+    
+}

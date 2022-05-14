@@ -2,16 +2,17 @@
     padding: 0;
     box-sizing: border-box;
     text-decoration: none;
-    margin: 0;
+    margin: 0 auto;
 }
 .corpo{
     background: rgb(238,174,202);
     background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
-    padding: 1rem;
-    background-size: auto;
-    height: 99vh;
-    width: 99vw;
-    position: absolute;
+    padding: 0rem;
+    background-size: cover;
+    height: 100vmax;
+    width: 100vmax;
+    position: fixed;
+    margin: 0 auto;
 }
 .corpo-login{
     flex-direction: column;
@@ -27,12 +28,21 @@
     border-radius: 15px;
     text-align: center;
 }
-.corpo-login-input-botao{
+.corpo-login-botao{
     height: 45px;
     width: 100px;
     padding: 10px;
     border-radius: 25px;
     text-align: center;
     flex-direction: row;
-    gap: 10px;
+    gap: 15px;
+}
+.titulo{
+    text-align: center;
+}
+.botoes{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    gap: 65px;
 }
