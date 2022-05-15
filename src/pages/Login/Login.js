@@ -37,7 +37,7 @@ function Login (){
                 <div >
                     <div className="corpo-login">
                         <h1 className="titulo">Conectar-se</h1>   
-                        <input className="corpo-login-input" type="text" name = "email" placeholder = "usuario..." onChange={e => setEmail(e.target.value)}/>
+                        <input className="corpo-login-input" type="text" name = "email" placeholder = "Usuario..." onChange={e => setEmail(e.target.value)}/>
                         <input className="corpo-login-input" type="password" name = "password" placeholder = "Senha..."onChange={e => setPassword(e.target.value)}/>
                             <div className="botoes">
                                 <ButtonEnable/>

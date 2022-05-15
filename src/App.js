@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import {Routes, Route} from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Conta from './pages/Conta/Conta';
 import Login from './pages/Login/Login';
-import Cadastro from './pages/cadastro/Cadastro.js';
+import Cadastro from './pages/Cadastro/Cadastro.js';
 import Itens from './pages/Itens/Itens';
 import Main from './pages/Main';
 import Relatorio from './pages/Relatorio/Relatorio'
@@ -21,6 +21,13 @@ import "./App.css"
           <button type="button">Minhas Listas</button>
           <button type="button">Relatorio</button>
         </nav> */}
+        <div className='Cabecalho'>
+          <Link to="/login" >Login</Link>
+          <Link to="/cadastro" >Cadastro</Link>
+          <Link to="/conta" >Minhas Listas</Link>
+          <Link to="/relatorio" >Relatorio</Link>
+        </div>
+        
         <div>
         <Routes>
           <Route path="/"  element ={<Login/>} />
@@ -36,3 +43,7 @@ import "./App.css"
       );};   
 }
 export default App;
+
+
+
+

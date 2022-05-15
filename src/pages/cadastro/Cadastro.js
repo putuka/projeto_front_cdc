@@ -1,11 +1,11 @@
 import React, {useState} from "react";
 import { useNavigate } from "react-router-dom";
-import "../cadastro/cadastro.css"
+import "./Cadastro.css"
 import axios from "axios";
 
 function Cadastro (){
     const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const [password, setPassword] = useState('');   
     const [name, setName] = useState('');
     //const [pass2, setPass2] = useState('');
 

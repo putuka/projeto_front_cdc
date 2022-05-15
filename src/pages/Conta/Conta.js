@@ -1,8 +1,6 @@
 import React from "react";
 import "../css/conta.css";
 import Table from 'react-bootstrap/Table'
-import ButtonGroup from 'react-bootstrap/ButtonGroup'
-import { Button } from "bootstrap";
 
 function Conta(){
     return(
@@ -38,8 +36,6 @@ function Conta(){
                             <button type="button" class="btn btn-danger"><i class="far fa-trash-alt">Deletar</i></button>
                         </td>
                         </tr>
-                        
-                        
                     </tbody>
 
                 </Table>
