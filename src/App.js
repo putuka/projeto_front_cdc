@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import {Routes, Route} from "react-router-dom";
 import { Link } from "react-router-dom";
-import Conta from './pages/Conta/Conta';
+import Conta from './pages/Conta/Conta.js';
 import Login from './pages/Login/Login';
-import Cadastro from './pages/Cadastro/Cadastro.js';
+import Cadastro from './pages/cadastro/Cadastro.js';
 import Itens from './pages/Itens/Itens';
 import Main from './pages/Main';
-import Relatorio from './pages/Relatorio/Relatorio'
+import Relatorio from './pages/Relatorio/Relatorio';
 import "./App.css"
 
 
@@ -22,10 +22,10 @@ import "./App.css"
           <button type="button">Relatorio</button>
         </nav> */}
         <div className='Cabecalho'>
-          <Link to="/login" >Login</Link>
-          <Link to="/cadastro" >Cadastro</Link>
-          <Link to="/conta" >Minhas Listas</Link>
-          <Link to="/relatorio" >Relatorio</Link>
+            <a className='nav-bar-link' href='/login'>Login</a>
+            <a className='nav-bar-link' href='/cadastro'>Cadastro</a>
+            <a className='nav-bar-link' href='/conta'>Minhas Listas</a>
+            <a className='nav-bar-link' href='/relatorio'>Relatório</a> 
         </div>
         
         <div>

@@ -1,5 +1,13 @@
 .Cabecalho{
     text-align: center;
-    background: rgb(238,174,202);
-    background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+    background: rgb(207, 100, 240);
+    background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);    display: flex;
+    gap: 30px;
+    justify-content: space-around;
+    color: black;
+    
+}
+.nav-bar-link{
+    color: black;
+    font-size: 20px;
 }

@@ -1,8 +1,6 @@
 import React from "react";
-import "../Itens/Itens.css"
+import "../css/Itens.css"
 import Table from 'react-bootstrap/Table'
-import ButtonGroup from 'react-bootstrap/ButtonGroup'
-import { Button } from "bootstrap";
 
 function Itens(){
     return(
