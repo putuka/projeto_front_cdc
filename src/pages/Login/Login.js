@@ -3,22 +3,28 @@ import "../css/loginStyle.css"
 import {useNavigate} from "react-router-dom"
 import axios from "axios";
 
+const api = axios.create({
+    baseURL:'https://carrinhodecontas.herokuapp.com/api/v1/'
+})
+
 function Login (){
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');  
 
     let navigate = useNavigate();
 
-    const Login = () => {
-        axios.post("https://carrinhodecontas.herokuapp.com/api/v1/auth/login",{email: email,  password: password},
-        {
-          headers: {
-            'Content-Type': 'application/x-www-form-urlencoded', "Access-Control-Allow-Origin": "*", "Accept": "application/json" 
+    const login = async () =>{
+        console.log(email,password)
+        try{
+            let res = await api.post('/auth/login',{"password":password,"email":email})
+            localStorage.setItem("myKey",res.data.token)
+            console.log(localStorage.getItem("myKey"))
+            console.log(res)
+            navigate("/conta")
+        }catch(error){
+            console.error(error.response.data)
         }
-        }
-        ).then(response=>console.log(response))
-
-    }
+     }
 
     const ButtonEnable = () => {    
         console.log(email,password)
@@ -27,7 +33,7 @@ function Login (){
             return <input className="corpo-login-botao" href=""type="submit" name="botao" value="Logar" disabled/>
         }
         else {
-           return <input className="corpo-login-botao" href=""type="submit" name="botao" value="Logar" onClick={e=>Login()}/>
+           return <input className="corpo-login-botao" href=""type="submit" name="botao" value="Logar" onClick={e=>login()}/>
         }
     }
 
