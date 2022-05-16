@@ -3,6 +3,12 @@ import { useNavigate } from "react-router-dom";
 import "../css/cadastro.css"
 import axios from "axios";
 
+const api = axios.create({
+    baseURL:'https://carrinhodecontas.herokuapp.com/api/v1/'
+})
+
+
+
 function Cadastro (){
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');   
@@ -11,24 +17,33 @@ function Cadastro (){
 
     let navigate = useNavigate();
 
-    const CreateAccount = () =>{
-        axios.post("https://carrinhodecontas.herokuapp.com/api/v1/users",{email: email,  password: password,  name: name},
-        {
-          headers: {
-            'Content-Type': 'application/x-www-form-urlencoded', "Access-Control-Allow-Origin": "*", "Accept": "application/json" 
+    const createAccount = async () =>{
+        console.log(email,password,name)
+        try{
+            let res = await api.post('/users/',{"password":password,"email":email,"name":name})
+            console.log(res)
+        }catch(error){
+            console.error(error.response.data)
         }
-        }
-        ).then(response=>console.log(response))
-          }
+     }
+
+    // const CreateAccount = () =>{
+    //     axios.post("https://carrinhodecontas.herokuapp.com/api/v1/users",{email: email,  password: password,  name: name},
+    //     {
+    //       headers: {
+    //         'Content-Type': 'application/x-www-form-urlencoded', "Access-Control-Allow-Origin": "*", "Accept": "application/json" 
+    //     }
+    //     }
+    //     ).then(response=>console.log(response))
+    //       }
 
     const ButtonEnable = () => {
-        console.log(email,password,name)
         if(email===""||password===""||name==="")
         {
             return <input className="formbotao" href="/login" type="submit" name="acao" value="Cadastrar" disabled/>
         }
         else {
-            return <input className="formbotao" href="/login" type="submit" name="acao" value="Cadastrar" onClick={e=>CreateAccount()} />
+            return <input className="formbotao" href="/login" type="submit" name="acao" value="Cadastrar" onClick={e=>createAccount()} />
         }
     }
 

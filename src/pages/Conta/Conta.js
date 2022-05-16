@@ -1,45 +1,51 @@
 import React from "react";
 import "../css/conta.css";
+import Table from 'react-bootstrap/Table'
+import { Button } from "bootstrap";
 
 function Conta(){
     return(
         <html className="back">
             <head className="nav">
-                <a className="active" href="#Itens"> Minhas Listas</a>
-                <h1 className="titulo-lista"> Minha Lista</h1>
-                <input className="botaoAdicionar" type="submit" value="Adicionar Item"/>
             </head>
             <body className="body">
-                <div className="div-tabela">
-                    <table>
-                        <thead>
-                            <tr className="tabela">
-                                <th className="itens-tabela">Item</th>
-                                <th className="itens-tabela">Quantidade</th>
-                                <th className="itens-tabela">Valor Atacado</th>
-                                <th className="itens-tabela">Valor Varejo</th>
-                                <th className="itens-tabela">Valor Total</th>
-                                <th className="itens-tabela">Ação</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr className="tabela">
-                                <tb> exemplo1</tb>
-                                <tb> exemplo2</tb>
-                                <tb> exemplo3</tb>
-                                <tb> exemplo4</tb>
-                                <tb> exemplo5</tb>
-                                <tb> <input className="botaoEnviar"type="submit" value="editar"/> <input className="botaoExcluir" type="submit" value="excluir"/></tb>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+            <h1>
+        Minhas Listas
+        <div>
+        <button type="button" class="btn btn-primary"><i class="far fa-eye"></i>Adicionar Lista</button> 
+        </div>
+    </h1>
+   <div class="panel-body table-responsive">
+   <Table striped bordered hover>
+        <thead>
+            <tr>
+            <th>#</th>
+            <th>Nome da ista</th>
+            <th>Valor da lista</th>
+            <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+            <td>1</td>
+            <td>Lista1</td>
+            <td>Soma</td>
+            <td>
+                <button type="button" class="btn btn-primary"><i class="far fa-eye"></i>Editar</button>
+                <button type="button" class="btn btn-success"><i class="fas fa-edit"></i>Compartilhar</button>
+                <button type="button" class="btn btn-danger"><i class="far fa-trash-alt">Deletar</i></button>
+            </td>
+            </tr>
+            
+            
+        </tbody>
+
+    </Table>
+   </div>
             </body>
 
-           
         </html>
-
-
+        
     );};
 
 export default Conta;
