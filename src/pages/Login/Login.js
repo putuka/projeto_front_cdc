@@ -14,7 +14,7 @@ function Login (){
     let navigate = useNavigate();
 
     const login = async () =>{
-        console.log(email,password)
+        
         try{
             let res = await api.post('/auth/login',{"password":password,"email":email})
             localStorage.setItem("myKey",res.data.token)
@@ -27,7 +27,7 @@ function Login (){
      }
 
     const ButtonEnable = () => {    
-        console.log(email,password)
+        
         if(email===""||password==="")
         {
             return <input className="corpo-login-botao" href=""type="submit" name="botao" value="Logar" disabled/>
