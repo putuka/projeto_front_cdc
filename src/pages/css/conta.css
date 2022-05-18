@@ -21,11 +21,12 @@
     font-size: 30px;
 }
 .table-responsive {
-    max-height:700px;
+    max-height:200px;
     max-width: 1000px;
 }
 table {
     border-collapse: collapse;
+    overflow-y: scroll;
   }
 td,
 th {
@@ -34,4 +35,7 @@ th {
   border: dashed 1px lightblue;
   overflow: hidden;
   white-space: nowrap;
+}
+.table-responsive {
+    max-height:300px;
 }

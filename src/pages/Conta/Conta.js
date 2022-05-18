@@ -1,11 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import "../css/conta.css";
 import Table from 'react-bootstrap/Table'
-//import { Button } from "bootstrap";
-import {useLocation, useNavigate} from "react-router-dom"
-import * as Reactbootstrap from 'react-bootstrap'
-import Form from 'react-bootstrap/Form'
-
+import {useNavigate} from "react-router-dom"
 import axios from 'axios';
 
 
@@ -19,27 +15,20 @@ function Conta(){
 
     const [dados,setDados] = useState('')
     const [carrinhos,setCarrinhos]=useState({carrinhos:[]})
-    const [adicionar,setAdd] = useState('')
+    const [nomeCarro,setNomeCarro] = useState('')
+    const [carId,setCarid] = useState('')
+    const [user_ids,setUserid]=useState({user_ids:[]})
 
-   
-    const BotaoLigado = () => {    
-        console.log(adicionar)
-        if(!adicionar||adicionar==='')
+    const BotaoLigado = () => {
+        if(!nomeCarro)
         {
-            //return (<input className="corpo-login-input" type="text" name = "email" placeholder = "Nome da lista" disabled/>)
+            return <input className="corpo-login-botao" href=""type="submit" name="botao" value="Criar" disabled/>
         }
+        
         else {
-            return (
-                <h1>
-                     <input className="corpo-login-input" type="text" name = "email" placeholder = "Nome da lista" />
-                    <input  href="" type="submit" name="botao" value="Confrimar" onClick={()=>{setAdd('')}}/>
-                </h1>
-           )
+            return <input className="corpo-login-botao" href=""type="submit" name="botao" value="Criar" onClick={e=>criarCarrinho()}/>
         }
     }
-    
-
-
      let navigate = useNavigate();
      useEffect(()=>{
         if(!localStorage.getItem("myKey")){navigate("/login")}
@@ -51,7 +40,6 @@ function Conta(){
                 catch(error){
                     //console.error(error.response.data)
                 }
-
             }
             const getCarrinhos = async () => {
                 try{
@@ -62,28 +50,44 @@ function Conta(){
                 catch(error){
                     //console.error(error.response.data)
                 }
-
             }
             getUserdata() 
             getCarrinhos()
      },[setDados])
 
-    //  const getCarros = async () =>{
-    //     try{
-    //         let res = await api.getItem()
-    //         let user = res.data.user
-            
+     const criarCarrinho =async()=>{
+        try{
+            let res = await api.post('shopcarts/',{"name":nomeCarro},{headers:{Authorization: localStorage.getItem("myKey")}})
+            setNomeCarro(null)
+            console.log("criou")
+        }catch(error){
+            console.error(error.response.data)
+        }       
+    }
+    const delCarrinho = async(id)  =>{
+        try{
+            let res = await api.put('shopcarts/'+id,{"user_ids":[]},{headers:{Authorization: localStorage.getItem("myKey")}})
+            console.log("bye bye")
+        }catch(error){
+            console.error(error.response.data)
+        } 
+    }
 
-    //         console.log(res)
-    //         //navigate("/conta")
-    //     }catch(error){
-    //         console.error(error.response.data)
-    //     }
-    //  }
+    const compCarrinho = async(id,name)=>{
+        try{
+            let array = [localStorage.getItem("myId"),user_ids.user_ids[0]]
+            let res = await api.put('shopcarts/'+id,{"user_ids":array},{headers:{Authorization: localStorage.getItem("myKey")}})
+            console.log("compartilhando")
+        }catch(error){
+            console.error(error.response.data)
+        } 
+    }
 
-    
+    const editarCar = (id)=>{
+            localStorage.setItem("carId",id)
+            navigate("/itens")
+    }
         return(
-            
             <html className="back">
                 <head className="nav">
                 </head>
@@ -94,17 +98,16 @@ function Conta(){
                   </h1>
             Minhas Listas
             <div>
-            <input  href="" type="submit" name="botao" value="Adicionar Lista" onClick={()=>{setAdd('S')}}/>
-            
-            <BotaoLigado/>
+                Adicionar Lista  
+                <input className="corpo-login-input" type="text" name = "email" placeholder = "Nome da lista" onChange={e => setNomeCarro(e.target.value)} />
+                <BotaoLigado/>
             </div>
         </h1>
        <div class="panel-body table-responsive">
        <Table striped bordered hover>
             <thead>
                 <tr>
-                
-                <th>#</th>
+                <th>ID</th>
                 <th>Donos</th>
                 <th>Nome da ista</th>
                 <th>Valor da lista</th>
@@ -123,18 +126,16 @@ function Conta(){
                 <td>{item.name}</td>
                 <td>Soma</td>
                 <td>
-                    <button type="submit" class="btn btn-primary"><i class="far fa-eye"></i>Editar</button>
-                    <button type="submit" class="btn btn-success"><i class="fas fa-edit"></i>Compartilhar</button>
-                    <button type="submit" class="btn btn-danger"><i class="far fa-trash-alt">Deletar</i></button>
+                
+                    <input  type="submit" name = "editar" placeholder = "Editar" onClick={e => editarCar(item.id)} />
+                    <input className="corpo-login-input" type="text" name = "email" placeholder = "Nome da lista" onChange={e => setUserid({user_ids:e.target.value})} />
+                    <input  type="submit" name = "editar" placeholder = "Editar" onClick={e=>compCarrinho(item.id,item.name)} />
+                    <button type="submit" class="btn btn-danger"><i class="far fa-trash-alt" onClick={e=>delCarrinho(item.id)}>Deletar</i></button>
                 </td>
                 </tr>
                     ))
                 }
-                
-                
-                
             </tbody>
-    
         </Table>
        </div>
                 </body>
