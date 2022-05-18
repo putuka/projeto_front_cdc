@@ -1,8 +1,36 @@
-import React from "react";
+import React, { useEffect,useState } from "react";
 import "../css/Itens.css"
 import Table from 'react-bootstrap/Table'
+import axios from "axios";
+import {useNavigate} from "react-router-dom"
+
+
+
+const api = axios.create({
+    baseURL:'https://carrinhodecontas.herokuapp.com/api/v1/'
+})
+
 
 function Itens(){
+    const [tabela,setTabela] = useState('')
+
+    let navigate = useNavigate();
+    const getTabelaData = async () => {
+        try{
+            let data = await api.get(/shopcarts/+localStorage.getItem("carId"),{headers:{Authorization: localStorage.getItem("myKey")}}).then(({data})=>data);   
+            setTabela(data)
+            console.log(tabela)
+        }
+        catch(error){
+            //console.error(error.response.data)
+        }
+    }
+
+    useEffect(()=>{
+        if(!localStorage.getItem("myKey")){navigate("/login")}
+        getTabelaData() 
+     },[setTabela])
+
     return(
         <html className="back">
             <head className="nav">
@@ -10,7 +38,8 @@ function Itens(){
             </head>
             <body className="body">
                 <h1>
-                    Nome da lista X
+                    #{tabela.id} 
+                    {tabela.name}
                     <div >
                     <button type="button" class="btn btn-primary"><i class="far fa-eye"></i>Adicionar Item</button> 
                     </div>

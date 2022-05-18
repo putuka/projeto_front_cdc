@@ -8,7 +8,7 @@ import axios from 'axios';
 const api = axios.create({
     baseURL:'https://carrinhodecontas.herokuapp.com/api/v1/'
 })
-
+var arrayId = [localStorage.getItem("myId")]
 
 
 function Conta(){
@@ -18,6 +18,17 @@ function Conta(){
     const [nomeCarro,setNomeCarro] = useState('')
     const [carId,setCarid] = useState('')
     const [user_ids,setUserid]=useState({user_ids:[]})
+
+    
+    var input = document.querySelector("#idsUser");
+
+    function Add(valor) {
+        if(!arrayId.includes(valor,0))
+        {
+            arrayId.push(valor);
+        }
+        //document.getElementById("RETORNO").innerHTML = arrayId;
+    }
 
     const BotaoLigado = () => {
         if(!nomeCarro)
@@ -29,36 +40,38 @@ function Conta(){
             return <input className="corpo-login-botao" href=""type="submit" name="botao" value="Criar" onClick={e=>criarCarrinho()}/>
         }
     }
+    const getCarrinhos = async () => {
+        try{
+            let data = await api.get('/shopcarts',{headers:{Authorization: localStorage.getItem("myKey")}}).then(({data})=>data);
+            console.log(data)
+            setCarrinhos({carrinhos:data})
+        }
+        catch(error){
+            //console.error(error.response.data)
+        }
+    }
+
+    const getUserdata = async () => {
+        try{
+            let data = await api.get(/users/+localStorage.getItem("myId"),{headers:{Authorization: localStorage.getItem("myKey")}}).then(({data})=>data);   
+            setDados(data.name)
+        }
+        catch(error){
+            //console.error(error.response.data)
+        }
+    }
      let navigate = useNavigate();
      useEffect(()=>{
         if(!localStorage.getItem("myKey")){navigate("/login")}
-            const getUserdata = async () => {
-                try{
-                    let data = await api.get(/users/+localStorage.getItem("myId"),{headers:{Authorization: localStorage.getItem("myKey")}}).then(({data})=>data);   
-                    setDados(data.name)
-                }
-                catch(error){
-                    //console.error(error.response.data)
-                }
-            }
-            const getCarrinhos = async () => {
-                try{
-                    let data = await api.get('/shopcarts',{headers:{Authorization: localStorage.getItem("myKey")}}).then(({data})=>data);
-                    console.log(data)
-                    setCarrinhos({carrinhos:data})
-                }
-                catch(error){
-                    //console.error(error.response.data)
-                }
-            }
-            getUserdata() 
-            getCarrinhos()
+        getUserdata() 
+        getCarrinhos()
      },[setDados])
 
      const criarCarrinho =async()=>{
         try{
             let res = await api.post('shopcarts/',{"name":nomeCarro},{headers:{Authorization: localStorage.getItem("myKey")}})
             setNomeCarro(null)
+            getCarrinhos()
             console.log("criou")
         }catch(error){
             console.error(error.response.data)
@@ -67,17 +80,25 @@ function Conta(){
     const delCarrinho = async(id)  =>{
         try{
             let res = await api.put('shopcarts/'+id,{"user_ids":[]},{headers:{Authorization: localStorage.getItem("myKey")}})
+            getCarrinhos()
             console.log("bye bye")
         }catch(error){
             console.error(error.response.data)
         } 
     }
 
-    const compCarrinho = async(id,name)=>{
+    const compCarrinho = async(id,name,value)=>{
         try{
-            let array = [localStorage.getItem("myId"),user_ids.user_ids[0]]
-            let res = await api.put('shopcarts/'+id,{"user_ids":array},{headers:{Authorization: localStorage.getItem("myKey")}})
-            console.log("compartilhando")
+            
+            console.log("o valor é"+value)
+            Add(value);
+            console.log(arrayId)
+             let array = arrayId
+             console.log(array)
+             let res = await api.put('shopcarts/'+id,{"user_ids":array,"name":name},{headers:{Authorization: localStorage.getItem("myKey")}})
+             getCarrinhos()
+             console.log("compartilhando")
+             setUserid({user_ids:[]})
         }catch(error){
             console.error(error.response.data)
         } 
@@ -101,6 +122,11 @@ function Conta(){
                 Adicionar Lista  
                 <input className="corpo-login-input" type="text" name = "email" placeholder = "Nome da lista" onChange={e => setNomeCarro(e.target.value)} />
                 <BotaoLigado/>
+                <div>
+                Compartilhar Lista
+                <input id="idsUser" className="corpo-login-input" type="text" name = "email" placeholder = "Com quem voce deseja compartilhar" onChange={e => setUserid({user_ids:e.target.value})} />
+                </div>
+                
             </div>
         </h1>
        <div class="panel-body table-responsive">
@@ -126,10 +152,8 @@ function Conta(){
                 <td>{item.name}</td>
                 <td>Soma</td>
                 <td>
-                
                     <input  type="submit" name = "editar" placeholder = "Editar" onClick={e => editarCar(item.id)} />
-                    <input className="corpo-login-input" type="text" name = "email" placeholder = "Nome da lista" onChange={e => setUserid({user_ids:e.target.value})} />
-                    <input  type="submit" name = "editar" placeholder = "Editar" onClick={e=>compCarrinho(item.id,item.name)} />
+                    <input  type="submit" name = "editar" placeholder = "compartilhar" onClick={e=>compCarrinho(item.id,item.name,input.value)} />
                     <button type="submit" class="btn btn-danger"><i class="far fa-trash-alt" onClick={e=>delCarrinho(item.id)}>Deletar</i></button>
                 </td>
                 </tr>

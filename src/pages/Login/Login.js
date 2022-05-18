@@ -18,6 +18,7 @@ function Login (){
         try{
             let res = await api.post('/auth/login',{"password":password,"email":email})
             localStorage.setItem("myKey",res.data.token)
+            localStorage.setItem("myId",res.data.user.id)
             console.log(localStorage.getItem("myKey"))
             console.log(res)
             navigate("/conta")
