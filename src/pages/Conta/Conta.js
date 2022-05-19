@@ -19,11 +19,10 @@ function Conta(){
     const [carId,setCarid] = useState('')
     const [user_ids,setUserid]=useState({user_ids:[]})
 
-    
     var input = document.querySelector("#idsUser");
 
     function Add(valor) {
-        if(!arrayId.includes(valor,0))
+        if(!arrayId.includes(valor,0)&&valor!=null)
         {
             arrayId.push(valor);
         }
