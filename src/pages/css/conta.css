@@ -7,6 +7,10 @@
     width: 100vmax;
     position: fixed;
     margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+    
 }
 .nav{
     display: flex;
@@ -24,12 +28,11 @@
     max-height:200px;
     max-width: 1000px;
 }
-table {
+.table {
     border-collapse: collapse;
     overflow-y: scroll;
   }
-td,
-th {
+td,th {
   text-align:center;
   height: 25px;
   border: dashed 1px lightblue;
@@ -38,4 +41,8 @@ th {
 }
 .table-responsive {
     max-height:300px;
+}
+.div-body{
+    display: flex;
+    flex-direction: column;
 }

@@ -33,19 +33,16 @@ function Itens(){
 
     return(
         <html className="back">
-            <head className="nav">
-                
-            </head>
-            <body className="body">
-                <h1>
+            <header className="nav">
+            <h1 className="titulo-body">
                     #{tabela.id} 
                     {tabela.name}
-                    <div >
-                    <button type="button" class="btn btn-primary"><i class="far fa-eye"></i>Adicionar Item</button> 
-                    </div>
                 </h1>
+            </header>
+            <body className="body">
+                
                <div class="panel-body table-responsive">
-               <Table striped bordered hover>
+               <Table striped bordered hover className="table">
                     <thead>
                         <tr>
                         <th>#</th>
@@ -55,7 +52,7 @@ function Itens(){
                         <th> Ações</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody className="corpo-lista">
                         <tr>
                         <td>1</td>
                         <td>Item1</td>
@@ -65,19 +62,22 @@ function Itens(){
                             <button type="button" class="btn btn-primary"><i class="far fa-eye"></i>Editar</button> 
                             <button type="button" class="btn btn-danger"><i class="far fa-trash-alt">Deletar</i></button>
                         </td>
-                        </tr>
-                        
-                        
-                        
+                        </tr>       
                     </tbody>
 
                 </Table>
                </div>
-                
-                
+               <div > 
+                  <form className="adicionar-itens">
+                        <title className="div-itens">Categoria</title>
+                        <div className="div-itens"><p> Nome do Item </p></div> <div> <input className="inputs" type="text" /></div>
+                        <div className="div-itens"><p> Valor </p></div> <div> <input className="inputs" type="text" /></div>
+                        <div className="div-itens"><p> Valor de Atacado </p></div> <div> <input className="inputs" type="text" /></div>
+                        <div className="div-itens"><p> Valor de Varejo </p></div> <div> <input className="inputs" type="text" /></div>
+                        <div className="div-itens"><p> </p></div> <div> <input className="inputs" type="submit" value="Adicionar"/></div>
+                   </form>
+               </div>
             </body>
-
-           
         </html>
 
 

@@ -110,58 +110,61 @@ function Conta(){
     }
         return(
             <html className="back">
-                <head className="nav">
-                </head>
-                <body className="body">
-                <h1>
-                  <h1>
-                      Olá {dados}
-                  </h1>
-            Minhas Listas
-            <div>
-                Adicionar Lista  
-                <input className="corpo-login-input" type="text" name = "email" placeholder = "Nome da lista" onChange={e => setNomeCarro(e.target.value)} />
-                <BotaoLigado/>
-                <div>
-                Compartilhar Lista
-                <input id="idsUser" className="corpo-login-input" type="text" name = "email" placeholder = "Com quem voce deseja compartilhar" onChange={e => setUserid({user_ids:e.target.value})} />
-                </div>
+                <head className="nav"/>
+
+            <body className="body">
+                <div className='div-body'>
+                    <div>
+                    <h1>
+                        Olá, {dados}
+                        Essas são suas Listas!
+                    </h1>
                 
-            </div>
-        </h1>
-       <div class="panel-body table-responsive">
-       <Table striped bordered hover>
-            <thead>
-                <tr>
-                <th>ID</th>
-                <th>Donos</th>
-                <th>Nome da ista</th>
-                <th>Valor da lista</th>
-                <th>Ações</th>
-                </tr>
-            </thead>
-            <tbody>
-                {
-                    carrinhos.carrinhos && carrinhos.carrinhos.map((item)=>(
-                        <tr key={carrinhos.id}>
-                
-                <td>{item.id}</td>
-                <td>{item.users && item.users.map((item)=>(
-                    <li key={item.id}>{item.name}</li>
-                ))}</td>
-                <td>{item.name}</td>
-                <td>Soma</td>
-                <td>
-                    <input  type="submit" name = "editar" placeholder = "Editar" onClick={e => editarCar(item.id)} />
-                    <input  type="submit" name = "editar" placeholder = "compartilhar" onClick={e=>compCarrinho(item.id,item.name,input.value)} />
-                    <button type="submit" class="btn btn-danger"><i class="far fa-trash-alt" onClick={e=>delCarrinho(item.id)}>Deletar</i></button>
-                </td>
-                </tr>
-                    ))
-                }
-            </tbody>
-        </Table>
-       </div>
+                        <div className='lista-top'>
+                            Adicionar Lista  
+                            <input className="corpo-login-input" type="text" name = "email" placeholder = "Nome da lista" onChange={e => setNomeCarro(e.target.value)} />
+                            <BotaoLigado/>
+                            <div>
+                            Compartilhar Lista
+                            <input id="idsUser" className="corpo-login-input" type="text" name = "email" placeholder = "Com quem voce deseja compartilhar" onChange={e => setUserid({user_ids:e.target.value})} />
+                            </div>
+                            
+                        </div>
+                        </div>
+                    <div class="panel-body table-responsive">
+                    <Table striped bordered hover className='table'>
+                            <thead>
+                                <tr>
+                                <th>ID</th>
+                                <th>Donos</th>
+                                <th>Nome da ista</th>
+                                <th>Valor da lista</th>
+                                <th>Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {
+                                    carrinhos.carrinhos && carrinhos.carrinhos.map((item)=>(
+                                        <tr key={carrinhos.id}>
+                                
+                                <td>{item.id}</td>
+                                <td>{item.users && item.users.map((item)=>(
+                                    <li key={item.id}>{item.name}</li>
+                                ))}</td>
+                                <td>{item.name}</td>
+                                <td>Soma</td>
+                                <td>
+                                    <input  type="submit" name = "editar" placeholder = "Editar" onClick={e => editarCar(item.id)} />
+                                    <input  type="submit" name = "editar" placeholder = "compartilhar" onClick={e=>compCarrinho(item.id,item.name,input.value)} />
+                                    <button type="submit" class="btn btn-danger"><i class="far fa-trash-alt" onClick={e=>delCarrinho(item.id)}>Deletar</i></button>
+                                </td>
+                                </tr>
+                                    ))
+                                }
+                            </tbody>
+                        </Table>
+                    </div>
+                    </div>
                 </body>
     
             </html>

@@ -47,7 +47,7 @@ function Login (){
                         <input className="corpo-login-input" type="text" name = "email" placeholder = "Usuario..." onChange={e => setEmail(e.target.value)}/>
                         <input className="corpo-login-input" type="password" name = "password" placeholder = "Senha..."onChange={e => setPassword(e.target.value)}/>
                             <div className="botoes">
-                                <ButtonEnable/>
+                                <ButtonEnable />
                                 <input className="corpo-login-botao" href="" type="submit" name="botao" value="Cadastro" onClick={()=>{navigate("/cadastro")}}/>
                             </div>
                     </div>
