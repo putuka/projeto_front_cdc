@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {Routes, Route} from "react-router-dom";
 import Conta from './pages/Conta/Conta.js';
 import Login from './pages/Login/Login';
-import Cadastro from './pages/Cadastro/Cadastro';
+import Cadastro from './pages/cadastro/Cadastro';
 import Itens from './pages/Itens/Itens';
 import Main from './pages/Main';
 import Relatorio from './pages/Relatorio/Relatorio';
