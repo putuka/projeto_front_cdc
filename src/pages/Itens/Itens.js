@@ -12,13 +12,14 @@ const api = axios.create({
 
 
 function Itens(){
-    const [tabela,setTabela] = useState('')
+    const [tabela,setTabela]=useState({tabela:[]})
 
     let navigate = useNavigate();
     const getTabelaData = async () => {
         try{
             let data = await api.get(/shopcarts/+localStorage.getItem("carId"),{headers:{Authorization: localStorage.getItem("myKey")}}).then(({data})=>data);   
-            setTabela(data)
+            setTabela({tabela:data})
+            console.log(data)
             console.log(tabela)
         }
         catch(error){
@@ -53,16 +54,7 @@ function Itens(){
                         </tr>
                     </thead>
                     <tbody className="corpo-lista">
-                        <tr>
-                        <td>1</td>
-                        <td>Item1</td>
-                        <td>X</td>
-                        <td>X * preco</td>
-                        <td>
-                            <button type="button" class="btn btn-primary"><i class="far fa-eye"></i>Editar</button> 
-                            <button type="button" class="btn btn-danger"><i class="far fa-trash-alt">Deletar</i></button>
-                        </td>
-                        </tr>       
+                    
                     </tbody>
 
                 </Table>
@@ -74,6 +66,7 @@ function Itens(){
                         <div className="div-itens"><p> Valor </p></div> <div> <input className="inputs" type="text" /></div>
                         <div className="div-itens"><p> Valor de Atacado </p></div> <div> <input className="inputs" type="text" /></div>
                         <div className="div-itens"><p> Valor de Varejo </p></div> <div> <input className="inputs" type="text" /></div>
+                        <div className="div-itens"><p> Quantidade </p></div> <div> <input className="inputs" type="text" /></div>
                         <div className="div-itens"><p> </p></div> <div> <input className="inputs" type="submit" value="Adicionar"/></div>
                    </form>
                </div>

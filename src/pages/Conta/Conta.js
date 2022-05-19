@@ -136,7 +136,7 @@ function Conta(){
                                 <tr>
                                 <th>ID</th>
                                 <th>Donos</th>
-                                <th>Nome da ista</th>
+                                <th>Nome da lista</th>
                                 <th>Valor da lista</th>
                                 <th>Ações</th>
                                 </tr>

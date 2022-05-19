@@ -17,10 +17,11 @@ const Relatorio = () => {
     const getUserdata = async () => {
         try{
             let data = await api.get(/users/+localStorage.getItem("myId"),{headers:{Authorization: localStorage.getItem("myKey")}}).then(({data})=>data);   
-            setDados({dados:data})
+
             console.log(data)
+            setDados({dados:data})
             console.log("dados: ", dados)
-            console.log(dados.dados.spentThisYearByCategory.map(x=>x.name))
+            console.log("gastou:"+ dados.dados.spentThisYearByCategory.map(x=>x.spentThisYear))
         }
         catch(error){
             //console.error(error.response.data)
@@ -33,10 +34,10 @@ const Relatorio = () => {
 
   
   var data = {
-    labels: dados.dados.spentThisYearByCategory.map(x=>x.name),
+    labels: dados?.dados?.spentThisYearByCategory?.map(x=>x.name),
     datasets: [{
       label: '# of Votes',
-      data: dados.dados.spentThisYearByCategory.map(x=>x.spentThisYear),
+      data: [dados?.dados?.spentThisYearByCategory?.map(x=>x.spentThisYear)],
       backgroundColor: [
         'rgba(255, 99, 132, 0.2)',
         'rgba(54, 162, 235, 0.2)',
@@ -70,6 +71,7 @@ const Relatorio = () => {
 
   return (
     <div>
+      <setDados/>
       <Doughnut
         data={data}
         height={400}
