@@ -114,9 +114,8 @@ function Conta(){
             <body className="body">
                 <div className='div-body'>
                     <div>
-                    <h1>
-                        Olá, {dados}
-                        Essas são suas Listas!
+                    <h1 className='titulo-list'>
+                        Olá, {dados}, Essas são suas Listas!
                     </h1>
                 
                         <div className='lista-top'>

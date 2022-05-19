@@ -35,6 +35,7 @@ const Relatorio = () => {
 
   
   var data = {
+    
     labels: dados?.spentThisYearByCategory?.map(x=>x.name),
     datasets: [{
       label: '# of Votes',
