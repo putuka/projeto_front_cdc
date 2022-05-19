@@ -33,10 +33,10 @@ const Relatorio = () => {
 
   
   var data = {
-    labels: dados.dados.spentThisYearByCategory.map(x=>x.name),
+    labels: dados?.dados?.spentThisYearByCategory?.map(x=>x.name),
     datasets: [{
       label: '# of Votes',
-      data: dados.dados.spentThisYearByCategory.map(x=>x.spentThisYear),
+      data: dados?.dados?.spentThisYearByCategory?.map(x=>x.spentThisYear),
       backgroundColor: [
         'rgba(255, 99, 132, 0.2)',
         'rgba(54, 162, 235, 0.2)',

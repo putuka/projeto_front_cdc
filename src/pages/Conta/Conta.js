@@ -114,9 +114,8 @@ function Conta(){
             <body className="body">
                 <div className='div-body'>
                     <div>
-                    <h1>
-                        Olá, {dados}
-                        Essas são suas Listas!
+                    <h1 className='titulo-list'>
+                        Olá, {dados}, Essas são suas Listas!
                     </h1>
                 
                         <div className='lista-top'>
@@ -153,9 +152,9 @@ function Conta(){
                                 <td>{item.name}</td>
                                 <td>Soma</td>
                                 <td>
-                                    <input  type="submit" name = "editar" placeholder = "Editar" onClick={e => editarCar(item.id)} />
-                                    <input  type="submit" name = "editar" placeholder = "compartilhar" onClick={e=>compCarrinho(item.id,item.name,input.value)} />
-                                    <button type="submit" class="btn btn-danger"><i class="far fa-trash-alt" onClick={e=>delCarrinho(item.id)}>Deletar</i></button>
+                                    <input  className='botao' type="submit" class="btn btn-danger" value="Editar" name = "editar" placeholder = "Editar" onClick={e => editarCar(item.id)} />
+                                    <input  className='botao' type="submit" class="btn btn-danger" value="Compartilhar" name = "Editar" placeholder = "compartilhar" onClick={e=>compCarrinho(item.id,item.name,input.value)} />
+                                    <input className='botao' type="submit" class="btn btn-danger" onClick={e=>delCarrinho(item.id)} value="Excluir"/>
                                 </td>
                                 </tr>
                                     ))
