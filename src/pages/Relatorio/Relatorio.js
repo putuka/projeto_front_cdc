@@ -13,31 +13,32 @@ const api = axios.create({
 })
 
 const Relatorio = () => {
-    const[dados,setDados]=useState({dados:[]})
-    const getUserdata = async () => {
-        try{
-            let data = await api.get(/users/+localStorage.getItem("myId"),{headers:{Authorization: localStorage.getItem("myKey")}}).then(({data})=>data);   
-
-            console.log(data)
-            setDados({dados:data})
-            console.log("dados: ", dados)
-            console.log("gastou:"+ dados.dados.spentThisYearByCategory.map(x=>x.spentThisYear))
-        }
-        catch(error){
-            //console.error(error.response.data)
-        }
+  const [dados, setDados] = useState(null);
+  const getUserdata = async () => {
+    try {
+      await api
+        .get(/users/ + localStorage.getItem("myId"), {
+          headers: { Authorization: localStorage.getItem("myKey") },
+        })
+        .then(({ data }) => setDados(data));
+    } catch (error) {
+      //console.error(error.response.data)
     }
+  };
 
   useEffect(() => {
-    getUserdata()
-  },[setDados])
+    if (!dados) {
+      getUserdata();
+    }
+    console.log("dados:",dados);
+  }, [dados])
 
   
   var data = {
-    labels: dados?.dados?.spentThisYearByCategory?.map(x=>x.name),
+    labels: dados?.spentThisYearByCategory?.map(x=>x.name),
     datasets: [{
       label: '# of Votes',
-      data: [dados?.dados?.spentThisYearByCategory?.map(x=>x.spentThisYear)],
+      data: dados?.spentThisYearByCategory?.map(x=>x.spentThisYear),
       backgroundColor: [
         'rgba(255, 99, 132, 0.2)',
         'rgba(54, 162, 235, 0.2)',
