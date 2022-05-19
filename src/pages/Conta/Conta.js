@@ -153,9 +153,9 @@ function Conta(){
                                 <td>{item.name}</td>
                                 <td>Soma</td>
                                 <td>
-                                    <input  type="submit" name = "editar" placeholder = "Editar" onClick={e => editarCar(item.id)} />
-                                    <input  type="submit" name = "editar" placeholder = "compartilhar" onClick={e=>compCarrinho(item.id,item.name,input.value)} />
-                                    <button type="submit" class="btn btn-danger"><i class="far fa-trash-alt" onClick={e=>delCarrinho(item.id)}>Deletar</i></button>
+                                    <button type="button" class="btn btn-info"><i class="far fa-trash-alt" onClick={e =>editarCar(item.id)}>editar</i></button>
+                                    <button type="button" class="btn btn-success"><i class="far fa-trash-alt" onClick={e=>compCarrinho(item.id,item.name,input.value)}>compartilhar</i></button>
+                                    <button type="button" class="btn btn-danger"><i class="far fa-trash-alt" onClick={e=>delCarrinho(item.id)}>Deletar</i></button>
                                 </td>
                                 </tr>
                                     ))

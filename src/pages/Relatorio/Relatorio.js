@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, Fragment } from 'react'
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import axios from "axios"
 
@@ -71,15 +71,21 @@ const Relatorio = () => {
   }
 
   return (
+    <>
     <div>
-      <setDados/>
+      
       <Doughnut
         data={data}
         height={400}
         options={options}
-
       />
     </div>
+    <div>
+      {"total gasto no ano: "+dados?.spentThisYear}
+    </div>
+    </>
+    
+    
   )
 }
 
