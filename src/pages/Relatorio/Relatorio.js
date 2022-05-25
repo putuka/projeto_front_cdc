@@ -2,6 +2,7 @@ import React, { useState, useEffect, Fragment } from "react";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import axios from "axios";
 import ChartDataLabels from "chartjs-plugin-datalabels";
+import { CSVLink } from "react-csv";
 
 import { Doughnut } from "react-chartjs-2";
 
@@ -83,6 +84,20 @@ const Relatorio = () => {
     },
   };
 
+  const headers = [
+    { label: "Categoria", key: "name" },
+    { label: "Gasto no ano", key: "spentThisYear" },
+  ];
+
+  const csvData = dados?.spentThisYearByCategory;
+  console.log(csvData);
+
+  const csvReport = {
+    data: csvData,
+    headers: headers,
+    filename: "SpentThisYearByCategory.csv",
+  };
+
   return (
     <>
       <div>
@@ -94,6 +109,7 @@ const Relatorio = () => {
         />
       </div>
       <div>{"total gasto no ano: " + dados?.spentThisYear}</div>
+      {!!csvData && <CSVLink {...csvReport}>Exportar em CSV</CSVLink>}
     </>
   );
 };
